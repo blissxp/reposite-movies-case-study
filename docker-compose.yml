@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  ################################
+  #   Setup postgres container
+  ################################
+  database:
+    image: postgres:latest
+    volumes:
+      - /var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=reposite
+      - POSTGRES_USER=reposite
+
+  ################################
+  #   Setup node container
+  ################################
+  server:
+    build: ./server
+    expose:
+      - 5000
+    ports:
+      - 5000:5000
+    volumes:
+      - ./server/src:/usr/src/server/src/
+    command: npm run dev
+    environment:
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=reposite
+      - POSTGRES_USER=reposite
+
+  frontend:
+    volumes:
+      - ./frontend/src:/usr/src/frontend/src
+    command: npm run start
+    build: ./frontend
+    ports:
+      - 3000:3000
+    links:
+      - server
