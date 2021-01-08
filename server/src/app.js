@@ -25,8 +25,8 @@ console.log("hello this is server/app.js");
 
 // App
 const app = express();
-app.get("/api", function (req, res) {
-  res.send("Hello api!");
+app.get("/server", function (req, res) {
+  res.send("Hello movies!");
 });
 
 app.listen(PORT);

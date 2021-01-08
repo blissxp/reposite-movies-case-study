@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Setup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Requirements: Docker, Node
 
-## Available Scripts
+Run `docker-compose` up to start the app
 
-In the project directory, you can run:
+# Stack
 
-### `npm start`
+The frontend is built with React for the frontend with [Ant Design]https://ant.design/docs/react/introduce) as a UI library.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The backend is built with express and postgres.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Database
 
-### `npm test`
+The database has 3 tables, `movies` , `moviesGenres`, and `genres`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The `movies` table has columns: `id`, `genreId`, `title`, `year`, `runtime`, `director`, `actors`,`plot`, and `posterUrl`.
 
-### `npm run build`
+The `moviesGenres` table has columns: `moviesId` and `genreIds`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The `genres` table has columns `id` and `genreName`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Movie App
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tasks
 
-### `npm run eject`
+You'll be creating a `/movies` API endpoint that returns a JSON array of items in the following format:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+    {
+        id: 1,
+        title: "Beetlejuice",
+        year: "1988",
+        runtime: "92",
+        genres: ["Comedy", "Fantasy"],
+        director: "Tim Burton",
+        actors: "Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page",
+        plot:
+        'A couple of recently deceased ghosts contract the services of a "bio-exorcist" in order to remove the obnoxious new owners of their house.',
+        posterUrl:
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwODE3MDE0MV5BMl5BanBnXkFtZTgwNTk1MjI4MzE@._V1_SX300.jpg",
+    },
+    {
+        id: 2,
+        title: "The Cotton Club",
+        year: "1984",
+        runtime: "127",
+        genres: ["Crime", "Drama", "Music"],
+        director: "Francis Ford Coppola",
+        actors: "Richard Gere, Gregory Hines, Diane Lane, Lonette McKee",
+        plot:
+        "The Cotton Club was a famous night club in Harlem. The story follows the people that visited the club, those that ran it, and is peppered with the Jazz music that made it so famous.",
+        posterUrl:
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU5ODAyNzA4OV5BMl5BanBnXkFtZTcwNzYwNTIzNA@@._V1_SX300.jpg",
+    },
+    {
+        id: 3,
+        title: "The Shawshank Redemption",
+        year: "1994",
+        runtime: "142",
+        genres: ["Crime", "Drama"],
+        director: "Frank Darabont",
+        actors: "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
+        plot:
+        "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        posterUrl:
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BODU4MjU4NjIwNl5BMl5BanBnXkFtZTgwMDU2MjEyMDE@._V1_SX300.jpg",
+    }
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Get paginated movie data from the API. Each call to the api should return 10 movies at a time.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. In the MoviesList component display the movies in list format. Each movie should be in a card component and include an image with the `posterUrl` and all the text information.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Include a pagination component which will update the page number and make another call to the API.
 
-## Learn More
+4. In the MoviesFilter component, build a dropdown that includes all the genres and filters the MoviesList component when a user selects a genre. When a genre is selected, the pagination component should be reset to page 1.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Optionally:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Create a second page for single movies. When a user clicks on a movie card, the app should route to that page with all the details of the movie.
