@@ -6,7 +6,7 @@ Run `docker-compose` up to start the app
 
 # Stack
 
-The frontend is built with React for the frontend with [Ant Design]https://ant.design/docs/react/introduce) as a UI library.
+The frontend is built with React for the frontend with [Ant Design](https://ant.design/docs/react/introduce) as a UI library.
 
 The backend is built with express and postgres.
 
