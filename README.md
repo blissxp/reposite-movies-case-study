@@ -2,7 +2,7 @@
 
 Requirements: Docker, Node
 
-Run `docker-compose` up to start the app
+Run `docker-compose up` to start the app
 
 # Stack
 
