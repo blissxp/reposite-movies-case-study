@@ -3,6 +3,7 @@
 const express = require("express");
 const pg = require("pg");
 const retry = require("retry");
+const cors = require("cors");
 
 const operation = retry.operation({ retries: 3 });
 
@@ -23,11 +24,11 @@ const PORT = 5000;
 
 // App
 const app = express();
-
-app.get("/server", function (req, res) {
-  res.send("Hello!");
+app.use(cors());
+console.log("hello");
+app.get("/api/server", (req, res) => {
+  res.send({ hello: "world" });
 });
-
 /**
  * Build endpoint /movies
  *

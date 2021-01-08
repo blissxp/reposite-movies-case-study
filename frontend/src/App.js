@@ -1,5 +1,4 @@
 import "./App.css";
-import "antd/dist/antd.css";
 import moviesData from "./movies.js";
 import { MoviesFilter, MoviesList } from "./components";
 
