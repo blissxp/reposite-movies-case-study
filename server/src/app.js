@@ -21,13 +21,27 @@ operation.attempt(function (attempt) {
 // Constants
 const PORT = 5000;
 
-console.log("hello this is server/app.js");
-
 // App
 const app = express();
+
 app.get("/server", function (req, res) {
-  res.send("Hello movies!");
+  res.send("Hello!");
 });
+
+/**
+ * Build endpoint /movies
+ *
+ * Should GET a paginated list of movies with
+ *
+ * @returns {array} list of movies
+ * **/
+
+/**
+ * Build endpoint /genres
+ *
+ * @returns {array} list of genres
+ *
+ * **/
 
 app.listen(PORT);
 console.log("Running on http://localhost:" + PORT);
