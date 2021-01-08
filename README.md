@@ -78,4 +78,6 @@ You'll be creating a `/movies` API endpoint that returns a JSON array of items i
 
 ### Optionally:
 
+- Add a reset filter button.
 - Create a second page for single movies. When a user clicks on a movie card, the app should route to that page with all the details of the movie.
+- Add an edit button to edit a movie plot.
