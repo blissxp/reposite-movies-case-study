@@ -1,6 +1,7 @@
 "use strict";
 
 const express = require("express");
+// https://node-postgres.com/api/client
 const pg = require("pg");
 const retry = require("retry");
 const cors = require("cors");

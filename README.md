@@ -4,11 +4,12 @@ Requirements: Docker, Node
 
 Run `docker-compose up` to start the app
 
+
 # Stack
 
 The frontend is built with React for the frontend with [Ant Design](https://ant.design/docs/react/introduce) as a UI library.
 
-The backend is built with express and postgres.
+The backend is built with Express and Postgres.
 
 ## Database
 
@@ -20,11 +21,7 @@ The `moviesGenres` table has columns: `moviesId` and `genreIds`
 
 The `genres` table has columns `id` and `genreName`
 
-# Movie App
 
-## Tasks
-
-You'll be creating a `/movies` API endpoint that returns a JSON array of items in the following format:
 
 ```
     {
@@ -68,16 +65,3 @@ You'll be creating a `/movies` API endpoint that returns a JSON array of items i
     }
 ```
 
-1. Get paginated movie data from the API. Each call to the api should return 10 movies at a time.
-
-2. In the MoviesList component display the movies in list format. Each movie should be in a card component and include an image with the `posterUrl` and all the text information.
-
-3. Include a pagination component which will update the page number and make another call to the API.
-
-4. In the MoviesFilter component, build a dropdown that includes all the genres and filters the MoviesList component when a user selects a genre. When a genre is selected, the pagination component should be reset to page 1.
-
-### Optionally:
-
-- Add a reset filter button.
-- Create a second page for single movies. When a user clicks on a movie card, the app should route to that page with all the details of the movie.
-- Add an edit button to edit a movie plot.

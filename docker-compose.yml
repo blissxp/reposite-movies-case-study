@@ -6,12 +6,14 @@ services:
   ################################
   database:
     image: postgres:latest
+    ports:
+        - '5432:5432'
     volumes:
-      - /var/lib/postgresql/data
+        - ./data/:/docker-entrypoint-initdb.d/
     environment:
       - POSTGRES_PASSWORD=test
-      - POSTGRES_DB=reposite
-      - POSTGRES_USER=reposite
+      - POSTGRES_DB=movies
+      - POSTGRES_USER=movies
 
   ################################
   #   Setup node container
@@ -27,8 +29,8 @@ services:
     command: npm run dev
     environment:
       - POSTGRES_PASSWORD=test
-      - POSTGRES_DB=reposite
-      - POSTGRES_USER=reposite
+      - POSTGRES_DB=movies
+      - POSTGRES_USER=movies
 
   frontend:
     volumes:
