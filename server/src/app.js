@@ -10,14 +10,14 @@ const operation = retry.operation({ retries: 3 });
 
 // https://www.npmjs.com/package/retry
 operation.attempt(function (attempt) {
-	var client = new pg.Client(
+	var client = new pg.Client({
 		host: 'localhost',
 		port: 5432,
 		database: 'movies',
 		user: 'movies',
 		password: 'test',
-		debug: true
-	);
+		debug: true 
+	});
 
 	client.connect(function (e) {
 		client.end();
