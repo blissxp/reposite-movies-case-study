@@ -4,7 +4,7 @@ services:
   ################################
   #   Setup postgres container
   ################################
-  database:
+  movies-database:
     image: postgres:latest
     ports:
         - '5432:5432'
@@ -18,7 +18,7 @@ services:
   ################################
   #   Setup node container
   ################################
-  server:
+  movies-server:
     build: ./server
     expose:
       - 5000
@@ -32,7 +32,7 @@ services:
       - POSTGRES_DB=movies
       - POSTGRES_USER=movies
 
-  frontend:
+  movies-frontend:
     volumes:
       - ./frontend/src:/usr/src/frontend/src
     command: npm run start
@@ -40,4 +40,4 @@ services:
     ports:
       - 3000:3000
     links:
-      - server
+      - movies-database
