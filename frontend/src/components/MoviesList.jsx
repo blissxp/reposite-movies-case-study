@@ -6,6 +6,32 @@
  *
  */
 
+import { Card } from 'antd';
+
+import { useState, useEffect } from "react";
+
 export const MoviesList = () => {
-  return <h1>Movies List</h1>;
+  const [ movies ] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("http://localhost:5000/api/movies");
+      const body = await response.json();
+      if (response.status !== 200) throw Error(body.message);
+
+      console.log(body);
+    };
+
+    fetchData();
+  }, []);
+	return (
+		<div> 
+		    <h1>Movies List</h1>;
+					{movies.map(movie => 
+						<Card>
+							 {movie}
+						</Card>
+					)}
+		</div>
+	) 
+
 };

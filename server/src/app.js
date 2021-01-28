@@ -48,6 +48,25 @@ app.get("/api/server", (req, res) => {
  * @returns {array} list of movies
  * **/
 
+app.get("/api/movies", async (req, res) => {
+	var client = new pg.Client({
+		host: 'localhost',
+		port: 5432,
+		database: 'movies',
+		user: 'movies',
+		password: 'test',
+		debug: true 
+	});
+
+	client.connect();
+
+	const movies = await client.query(
+		`SELECT * FROM movies;`
+	)
+
+	res.send(movies);
+});
+
 /**
  * Build endpoint /genres
  *
