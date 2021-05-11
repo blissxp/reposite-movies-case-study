@@ -1,8 +1,6 @@
 import "./App.css";
-import moviesData from "./movies.js";
 import { MoviesFilter, MoviesList } from "./components";
 
-console.log(moviesData);
 
 function App() {
   return (

@@ -36,10 +36,6 @@ const app = express();
 
 app.use(cors());
 
-app.get("/api/server", (req, res) => {
-	res.send({ hello: "world" });
-});
-
 /**
  * Build endpoint /movies
  *
